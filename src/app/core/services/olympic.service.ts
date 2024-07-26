@@ -30,19 +30,20 @@ export class OlympicService {
   getOlympics() {
     return this.olympics$.asObservable();
   }
+
+  // Le tableau des pays des jeux olympiques
   getCountry(): string[]{
     const olympics = this.olympics$.getValue();
     return olympics.map(olympicItem => olympicItem.country);
   }
 
+  // Le nombre de pays participant aux jeux olympiques
   countCountries(): number{
     return this.olympics$.getValue().length;
   }
 
-  countJOsNumber(participations: Participation[]): number{
-    return participations.reduce((total, p) => total + p.medalsCount, 0);
-  }
 
+// Le tableau des villes des jeux olympiques
   getJOs(): string[]{
     const olympics = this.olympics$.getValue();
     var list: string[] = [];
@@ -60,24 +61,29 @@ export class OlympicService {
   })
   }
 
+
+// Le nombre de médaille pour les participations d'un pays
   countMedalsNumber(participations: Participation[]): number {
     return participations.reduce((total, p) => total + p.medalsCount, 0);
   }
-
+// Le tableaux de toutes les médailles pour tous les pays
   getMedals(): number[]{
     const olympics = this.olympics$.getValue();
     return olympics.map(olympicItem => this.countMedalsNumber(olympicItem.participations));
   }
 
+  // Le nombre d'athlète pour les participations d'un pays
   countAthletesNumber(participations: Participation[]): number {
     return participations.reduce((total, p) => total + p.athleteCount, 0);
   }
 
+  // Le tableaux de tous les athlètes pour tous les pays
   getAthletes(): number[]{
     const olympics = this.olympics$.getValue();
     return olympics.map(olympicItem => this.countAthletesNumber(olympicItem.participations));
   }
 
+  // Les couleurs de la piechart
   getColors(count: number): string[]{
     const colors = [
       '#956065', '#b8cbe7', '#89a1db', '#793d52', '#9780a1', '#bfe0f1' 

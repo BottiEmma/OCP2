@@ -69,22 +69,26 @@ constructor(private olympicService: OlympicService, private route: ActivatedRout
     });
   }
 
+  // Initialise la chart
   initialiseChart(): void {
     if (this.lineChartData && this.lineChartOptions) {
       const chart = new Chartist.LineChart(this.chartContainer?.nativeElement, this.lineChartData, this.lineChartOptions);
     }
   }
 
+  // Récupère le nom du pays
   getCountryName(): string{
     const olympics = this.olympicsData.getValue()[this.sliceIndex];
     return olympics.country;
   }
 
+  // Récupère le tableau des années de chaque participation
   getParticipationsYear(): number[]{
     const olympics = this.olympicsData.getValue()[this.sliceIndex].participations;
     return olympics.map(olympicItem => olympicItem.year);
   }
 
+  // Récupère le tableau des médailles de chaque participation
   getParticipationsMedals(): number[]{
     const olympics = this.olympicsData.getValue()[this.sliceIndex].participations;
     return olympics.map(olympicItem => olympicItem.medalsCount);
