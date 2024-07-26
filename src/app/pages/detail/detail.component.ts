@@ -24,6 +24,7 @@ export class DetailComponent implements OnInit {
     series:[]
   }
   public lineChartOptions?: Chartist.LineChartOptions;
+  public responsiveOptions?: Chartist.ResponsiveOptions;
   @ViewChild('chartContainer', { static: true }) chartContainer?: ElementRef;
 
 constructor(private olympicService: OlympicService, private route: ActivatedRoute, private router: Router){}
@@ -55,6 +56,14 @@ constructor(private olympicService: OlympicService, private route: ActivatedRout
         showPoint: false,
         fullWidth: true,
       };
+      this.responsiveOptions = [
+        ['screen and (min-width: 640px)', {
+          chartPadding: 30
+        }],
+        ['screen and (min-width: 1024px)', {
+          chartPadding: 20
+        }]
+      ];
       this.initialiseChart();
 
     });

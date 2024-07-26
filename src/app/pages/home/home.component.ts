@@ -113,7 +113,7 @@ export class HomeComponent implements OnInit {
         $(data.element.getNode()).on('mouseover',   function() {
         console.log('Mouseover event triggered');
         console.log('Value:', value);
-        $('#tooltip').html(country + '<br>' + '<i class="fa-solid fa-award"></i>' + value).show();
+        $('#tooltip').html(country + '<br>' + '' + value).show();
         });
       
         $(data.element.getNode()).on('mouseout', function() {
