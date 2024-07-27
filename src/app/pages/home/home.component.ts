@@ -2,13 +2,9 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { Olympic } from 'src/app/core/models/Olympic';
-import { ChartistModule, Configuration } from 'ng-chartist';
 import * as Chartist from 'chartist';
 import { tap } from 'rxjs';
-import { Participation } from 'src/app/core/models/Participation';
-import { LineChart } from 'chartist';
 import ChartistTooltip from 'chartist-plugin-tooltips-updated';
-import { hover } from 'chartist-hover';
 import * as $ from 'jquery';
 import { Router } from '@angular/router';
 

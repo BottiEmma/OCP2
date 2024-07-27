@@ -1,9 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Participation } from 'src/app/core/models/Participation';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { Olympic } from 'src/app/core/models/Olympic';
-import { LineChart } from 'chartist';
 import * as Chartist from 'chartist';
 import { BehaviorSubject, tap } from 'rxjs';
 
