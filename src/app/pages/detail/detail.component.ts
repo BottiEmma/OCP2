@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, numberAttribute, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { Olympic } from 'src/app/core/models/Olympic';
@@ -30,9 +30,9 @@ constructor(private olympicService: OlympicService, private route: ActivatedRout
   ngOnInit(): void {
     this.sliceIndex = +this.route.snapshot.paramMap.get('id')!;
     this.olympicService.loadInitialData().pipe(tap(data => this.olympicsData.next(data))).subscribe(() => {
-      if(this.sliceIndex>=this.olympicsData.getValue().length){
+      if(this.sliceIndex>=this.olympicsData.getValue().length || isNaN(this.sliceIndex)){
         this.router.navigate(['notfound', this.sliceIndex]);
-      }
+      } else{
       this.countryName = this.getCountryName();
       this.medals = this.olympicService.getMedals()[this.sliceIndex];
       this.athletes = this.olympicService.getAthletes()[this.sliceIndex];
@@ -63,6 +63,7 @@ constructor(private olympicService: OlympicService, private route: ActivatedRout
         }]
       ];
       this.initialiseChart();
+    }
 
     });
   }
